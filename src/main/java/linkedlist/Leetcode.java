@@ -9,6 +9,25 @@ public class Leetcode{
     /**
      * https://leetcode.com/problems/reverse-linked-list/
      * 206. Reverse Linked List
+     * Recursive
+     */
+    public static ListNode<Integer> reverseLinkedList1(ListNode<Integer> head){
+        System.out.println("reverseLinkedList1");
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode p = reverseLinkedList1(head.next);
+        head.next.next = head;
+        head.next = null;
+        return p;
+
+    }
+
+
+    /**
+     * https://leetcode.com/problems/reverse-linked-list/
+     * 206. Reverse Linked List
      * Iterative
      */
     public static ListNode<Integer> reverseLinkedList(ListNode<Integer> head){
@@ -30,32 +49,15 @@ public class Leetcode{
 
     }
 
-    /**
-     * https://leetcode.com/problems/reverse-linked-list/
-     * 206. Reverse Linked List
-     * Recursive
-     */
-    public static ListNode<Integer> reverseLinkedList1(ListNode<Integer> head){
-        System.out.println("reverseLinkedList1");
-
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode p = reverseLinkedList1(head.next);
-        head.next.next = head;
-        head.next = null;
-        return p;
-
-    }
-
-
 
     /**
      * https://leetcode.com/problems/linked-list-cycle/
      * https://leetcode.com/problems/linked-list-cycle-ii/
      * Linked List Cycle
      */
-    public void linkedListCycle(){
+    public void linkedListCycle(ListNode<Integer> head){
+
+
 
     }
 
@@ -75,8 +77,19 @@ public class Leetcode{
 
     /**
      * https://leetcode.com/problems/middle-of-the-linked-list/
+     * @param head
+     * @return
      */
-    public void middleoftheLinkedList(){
+    public static ListNode<Integer> middleoftheLinkedList(ListNode<Integer> head){
+
+        ListNode<Integer> slow = head;
+        ListNode<Integer> fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
     }
 
     public static void main(String[] args) {
@@ -96,26 +109,26 @@ public class Leetcode{
 
         ListNode<Integer> res = null;
 
-        //test null
-        SinglyLinkedList.printAll(emptyLink.head);
-//        res = Leetcode.reverseLinkedList(emptyLink.head);
+//        //test null
+//        SinglyLinkedList.printAll(emptyLink.getHead());
+////        res = Leetcode.reverseLinkedList(emptyLink.head);
+////        SinglyLinkedList.printAll(res);
+//        res = Leetcode.reverseLinkedList1(emptyLink.getHead());
 //        SinglyLinkedList.printAll(res);
-        res = Leetcode.reverseLinkedList1(emptyLink.head);
-        SinglyLinkedList.printAll(res);
 
-        //test one node
-        SinglyLinkedList.printAll(oneNodelink.head);
-        res = Leetcode.reverseLinkedList(oneNodelink.head);
-        SinglyLinkedList.printAll(res);
-        res = Leetcode.reverseLinkedList1(oneNodelink.head);
-        SinglyLinkedList.printAll(res);
+//        //test one node
+//        SinglyLinkedList.printAll(oneNodelink.getHead());
+//        res = Leetcode.reverseLinkedList(oneNodelink.getHead());
+//        SinglyLinkedList.printAll(res);
+//        res = Leetcode.reverseLinkedList1(oneNodelink.getHead());
+//        SinglyLinkedList.printAll(res);
 
         //test more node
-        SinglyLinkedList.printAll(moreNodelink.head);
-        res = Leetcode.reverseLinkedList(moreNodelink.head);
+        SinglyLinkedList.printAll(moreNodelink.getHead());
+        res = Leetcode.reverseLinkedList(moreNodelink.getHead());
         SinglyLinkedList.printAll(res);
-        res = Leetcode.reverseLinkedList1(moreNodelink.head);
-        SinglyLinkedList.printAll(res);
+//        res = Leetcode.reverseLinkedList1(moreNodelink.getHead());
+//        SinglyLinkedList.printAll(res);
 
 
     }

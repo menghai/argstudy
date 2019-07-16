@@ -7,7 +7,15 @@ package linkedlist;
 
 public class SinglyLinkedList<T> {
 
-    public ListNode head = null;
+    private ListNode head = null;
+
+    public ListNode getHead() {
+        return head;
+    }
+
+    public void setHead(ListNode head) {
+        this.head = head;
+    }
 
     public ListNode findByValue(T value) {
         ListNode p = head;
